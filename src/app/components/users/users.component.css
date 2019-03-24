@@ -1,0 +1,49 @@
+.page{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: black;
+  color: white;
+}
+.border {
+  border: 2px solid plum;
+}
+h2{
+  width: 100%;
+  text-align: center;
+}
+.red-border{
+  border: 2px solid red;
+}
+.borderdash {
+  border: 2px dash plum;
+}
+.add-button {
+  width: 40%;
+  margin: 10px auto;
+  padding: 10px;
+}
+.container {
+  width: 75%;
+  margin: auto;
+  border: white solid 1px;
+  padding: 25px 50px;
+  display: flex;
+  flex-wrap: wrap;
+}
+ul{
+  list-style: none;
+}
+.container-item{
+  width: 100%;
+  display: flex;
+  margin: 10px auto;
+  border: white 1px solid;
+  padding: 25px 50px;
+  border-radius: 10px;
+}
+.user-content{
+  width: 95%;
+  margin: auto
+}

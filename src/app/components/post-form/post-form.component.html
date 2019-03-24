@@ -1,0 +1,10 @@
+<p>
+  post-form works!
+</p>
+<form action="" >
+  <input [(ngModel)]='currentPost.title' type="text" name='title' #title>
+  <input [(ngModel)]='currentPost.body' type="text" name='body' #body>
+  <input [(ngModel)]='currentPost.id'type="text" name="id" type="hidden">
+  <button (click)='addPost(title.value, body.value)' *ngIf='!isEdit'>Add Post</button>
+  <button (click)='updatePost()' *ngIf='isEdit'>Update Post</button>
+</form>

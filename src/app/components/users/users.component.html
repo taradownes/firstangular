@@ -1,0 +1,74 @@
+<div class="page">
+
+
+<h2>Users</h2>
+<button (click)="showUserForm = !showUserForm" class="add-button">Add User</button>
+<div *ngIf="showUserForm">
+
+<form #userForm='ngForm' (ngSubmit)="onSubmit(userForm)">
+  <div>
+    <label>First Name</label>
+    <input 
+    [(ngModel)]='user.firstName'
+    [ngClass]="{'red-border':userFirstName.errors && userFirstName.touched}" 
+    type="text"  
+    name="firstName"
+    #userFirstName='ngModel'
+    required
+    minlength="2"
+    >
+  </div>
+
+  <div>
+    <label>Last Name</label>
+    <input 
+    [(ngModel)]='user.lastName'     
+    [ngClass]="{'red-border':userLastName.errors && userLastName.touched}" 
+    type="text"  
+    name="lastName"
+    #userLastName='ngModel'
+    required
+    minlength="2">
+  </div>
+  <div>
+    <label>Age</label>
+    <input [(ngModel)]='user.age' type="number"  name="age">
+  </div>
+  <div>
+    <label>Email</label>
+    <input 
+    [(ngModel)]='user.email'    
+    [ngClass]="{'red-border':userEmail.errors && userEmail.touched}" 
+    type="text"  
+    name="email"
+    #userEmail='ngModel'
+    required
+    pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+  </div>
+
+  <button [disabled]="!userForm.form.valid">Add New User</button>
+</form>
+</div>
+
+
+  <ul *ngIf="loaded && users?.length > 0" class="container">
+      <li class="container-item" *ngFor="let user of users" >
+        <div class="user-content">
+            <h3 [class.border]="user.isActive">{{ user.firstName }} {{ user.lastName }}
+             <small><button (click)="toggleHide(user)"><i [ngClass]= "user.hide ? 'fa fa-plus' : 'fa fa-minus'"></i></button></small> 
+            </h3>
+
+            <ul *ngIf='!user.hide'>
+              <li>Age: {{ user.age }}</li>
+              <li>Email: {{ user.email }}</li>
+              <li>Joined: {{user.registered | date}}</li>
+            </ul>
+        </div>
+    </li>
+  </ul>
+
+  <h4 *ngIf="users?.length == 0">No users found</h4>
+
+  <h4 *ngIf="!loaded">Loading Users...</h4>
+
+</div>

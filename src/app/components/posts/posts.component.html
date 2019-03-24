@@ -1,0 +1,15 @@
+<app-post-form [currentPost]='currentPost' [isEdit]="isEdit" (newPost)='onNewPost($event)' (updatedPost)="onUpdatedPost($event)"></app-post-form>
+
+<h2>Posts</h2>
+  <div class="page" *ngFor='let post of posts'>
+  
+
+  <h4> <a routerLink="/post/{{post.id}}" >{{ post.title }}</a></h4>
+  <p>{{ post.body }}</p>
+  <button (click)="removePost(post)"><i class="fa fa-remove"></i></button>
+  <button (click)="editPost(post)"><i class="fa fa-pencil"></i></button>
+ 
+
+
+</div>
+
